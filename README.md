@@ -1,18 +1,18 @@
-# Road trip
+# Road Trip
 
 John is embarking on a family road trip, with a mission to reduce his carbon footprint by opting for an electric car. However, a minor challenge arises: the search for available charging stations. 
 
 For this project, we will design a leaflet map that displays the locations of charging stations along John's route from his initial starting point to his ultimate destination.
 
-Our visualization will include a Python Flask-powered API, HTML/CSS, JavaScript, and SQL
-
-(putting this temporarily, will remove after):
-## Technical Requirements for Project 3
-### Data and Delivery (25 points)
-  - Data components used in the project are clearly documented. (5 points)
+    ## Technicality 
+      Our visualization will include a Python Flask-powered API, HTML/CSS, JavaScript, and SQL.
+    ## Data & Delivery 
+ Data components used in the project are clearly documented. (5 points)
   - The dataset contains at least 100 unique records. (5 points)
   - A database is used to house the data (SQL, MongoDB, SQLite, etc.). (5 points)
   - The project is powered by a Python Flask API and includes HTML/CSS, JavaScript, and the chosen database. (10 points)
+      (putting this temporarily, will remove after):
+
 ### Back End (25 points)
   - The page created to showcase data visualizations runs without error. (7.5 points)
   - A JavaScript library not shown in class is used in the project. (7.5 points)
