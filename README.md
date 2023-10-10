@@ -1,8 +1,10 @@
 # Road trip
 
-### John is helping the environment by using an electric car. But there's a small problem, where are all the charging ports??
+John is embarking on a family road trip, with a mission to reduce his carbon footprint by opting for an electric car. However, a minor challenge arises: the search for available charging stations. 
 
-### For this project, we will be creating a leaflet map showing where there are charging stations available.
+For this project, we will design a leaflet map that displays the locations of charging stations along John's route from his initial starting point to his ultimate destination.
+
+Our visualization will include a Python Flask-powered API, HTML/CSS, JavaScript, and SQL
 
 (putting this temporarily, will remove after):
 ## Technical Requirements for Project 3
