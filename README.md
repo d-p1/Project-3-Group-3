@@ -1,10 +1,6 @@
-# Road trip
+# Project 3
 
-John is embarking on a family road trip, with a mission to reduce his carbon footprint by opting for an electric car. However, a minor challenge arises: the search for available charging stations. 
-
-For this project, we will design a leaflet map that displays the locations of charging stations along John's route from his initial starting point to his ultimate destination.
-
-Our visualization will include a Python Flask-powered API, HTML/CSS, JavaScript, and SQL
+With the rapid growth of Electric Vehicles in the US, Charging Stations are becoming more in Demand. Our focus will extend beyond mere location data; we aim to distinguish between public and private charging stations, providing users with invaluable information for planning their journeys. We aim to include overlays showcasing different connector types, charging networks, and geographic details at the Zip or County level.
 
 (putting this temporarily, will remove after):
 ## Technical Requirements for Project 3
