@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group3-Project3</title>
+
+    <!-- Leaflet CSS and JavaScript -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <style>
+        /* Adjust the style for all navbar links */
+        .navbar a {
+            color: white;          /* Set text color to white */
+            font-size: 18px;       /* Increase the font size */
+            text-decoration: none; /* Remove underlines */
+            padding: 10px 15px;    /* Some padding for better appearance */
+        }
+
+        /* Add a hover effect to the navbar links for better user feedback */
+        .navbar a:hover {
+            background-color: rgba(255, 255, 255, 0.1);  /* Slight white background on hover */
+        }
+
+        /* This is to ensure that the active tab (the one corresponding to the current page) has a different style */
+        .navbar a.active {
+            background-color: rgba(255, 255, 255, 0.2);  /* Slightly more pronounced white background */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="{{ url_for('home') }}" class="{{ 'active' if request.endpoint == 'home' else '' }}">Home</a>
+        <a href="{{ url_for('about') }}" class="{{ 'active' if request.endpoint == 'about' else '' }}">About Us</a>
+        <a href="{{ url_for('cars') }}" class="{{ 'active' if request.endpoint == 'cars' else '' }}">Electric Cars</a>
+        <a href="{{ url_for('stations') }}" class="{{ 'active' if request.endpoint == 'stations' else '' }}">Charging Stations</a>
+    </div>
+
+    <!-- Content of the page -->
+    <div class="content">
+        {% block content %}
+        <!-- This is where content from child templates will be rendered -->
+        {% endblock %}
+    </div>
+</body>
+
+</html>

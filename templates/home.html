@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    body {
+        background-image: url("{{ url_for('static', filename='images/background.jpg') }}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    h1 {
+        text-align: center;
+        color: cyan;
+        font-size: 40px;
+    }
+</style>
+
+<h1>Welcome to Group3-Project3</h1>
+<p>This is the main page of our website.</p>
+{% endblock %}
