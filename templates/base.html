@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EV Oasis</title>
+    <title>Group3-Project3</title>
 
     <!-- Leaflet CSS and JavaScript -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
@@ -49,12 +49,16 @@
 
 <body>
     <!-- Navigation Bar -->
+
     <div class="navbar">
-        <a href="{{ url_for('home') }}" class="{{ 'active' if request.endpoint == 'home' else '' }}">Home</a>
-        <a href="{{ url_for('about') }}" class="{{ 'active' if request.endpoint == 'about' else '' }}">About Us</a>
-        <a href="{{ url_for('cars') }}" class="{{ 'active' if request.endpoint == 'cars' else '' }}">Electric Cars</a>
-        <a href="{{ url_for('stations') }}" class="{{ 'active' if request.endpoint == 'stations' else '' }}">Charging Stations</a>
+    <a href="{{ url_for('home') }}" class="{{ 'active' if request.endpoint == 'home' else '' }}">Home</a>
+    <a href="{{ url_for('about') }}" class="{{ 'active' if request.endpoint == 'about' else '' }}">About Us</a>
+    <a href="{{ url_for('cars') }}" class="{{ 'active' if request.endpoint == 'cars' else '' }}">Electric Cars</a>
+    <a href="{{ url_for('stations') }}" class="{{ 'active' if request.endpoint == 'stations' else '' }}">Charging Stations</a>
+    <a href="{{ url_for('charts') }}" class="{{ 'active' if request.endpoint == 'charts' else '' }}">Charts and Plots</a>
+    <a href="{{ url_for('sources') }}" class="{{ 'active' if request.endpoint == 'sources' else '' }}">Sources</a>
     </div>
+
 
     <!-- Content of the page -->
     <div class="content">

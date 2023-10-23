@@ -10,14 +10,12 @@
         attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
-    // Function to fetch and display charging stations based on map's center
     function fetchStations() {
         const center = map.getCenter();
 
         fetch(`/api/charging-stations/?lat=${center.lat}&lng=${center.lng}`)
         .then(response => response.json())
         .then(data => {
-            // Clear existing markers
             map.eachLayer(layer => {
                 if(layer instanceof L.Marker) {
                     map.removeLayer(layer);
@@ -36,10 +34,8 @@
         });
     }
 
-    // Call the function initially to load stations at the start
-    fetchStations();
+    fetchStations();  // Call this function to initially populate the map
 
-    // Attach the function to the moveend event to fetch stations dynamically based on map movement
-    map.on('moveend', fetchStations);
+    map.on('moveend', fetchStations);  // Call the function when the map is moved
 </script>
 {% endblock %}
