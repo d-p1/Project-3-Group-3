@@ -1,37 +1,45 @@
 {% extends "base.html" %}
 
 {% block content %}
-<style>
-    #map {
-        height: 500px;
-    }
-</style>
-
-<div id="map"></div>
+<div id="map" style="height: 400px;"></div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var map = L.map('map').setView([36.7783, -119.4179], 6);  // Setting the view to cover California
+    var map = L.map('map').setView([36.7783, -119.4179], 6);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
 
-        fetch('/charging-stations/')
-            .then(response => response.json())
-            .then(data => {
-                if (!data.error) {
-                    data.forEach(station => {
-                        if (station.AddressInfo && station.AddressInfo.Latitude && station.AddressInfo.Longitude) {
-                            var marker = L.marker([station.AddressInfo.Latitude, station.AddressInfo.Longitude]).addTo(map);
-                            marker.bindPopup(`<b>${station.AddressInfo.Title}</b><br>${station.AddressInfo.AddressLine1}`);
-                        }
-                    });
-                } else {
-                    console.error(data.error);
+    // Function to fetch and display charging stations based on map's center
+    function fetchStations() {
+        const center = map.getCenter();
+
+        fetch(`/api/charging-stations/?lat=${center.lat}&lng=${center.lng}`)
+        .then(response => response.json())
+        .then(data => {
+            // Clear existing markers
+            map.eachLayer(layer => {
+                if(layer instanceof L.Marker) {
+                    map.removeLayer(layer);
                 }
-            })
-            .catch(error => console.error('Error fetching charging stations:', error));
-    });
+            });
+
+            data.forEach(station => {
+                if (station.AddressInfo && station.AddressInfo.Latitude && station.AddressInfo.Longitude) {
+                    L.marker([station.AddressInfo.Latitude, station.AddressInfo.Longitude]).addTo(map)
+                    .bindPopup(station.AddressInfo.Title || "Unknown Station");
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching the charging stations:', error);
+        });
+    }
+
+    // Call the function initially to load stations at the start
+    fetchStations();
+
+    // Attach the function to the moveend event to fetch stations dynamically based on map movement
+    map.on('moveend', fetchStations);
 </script>
 {% endblock %}

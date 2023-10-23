@@ -25,35 +25,29 @@ def cars():
 def stations():
     return render_template("stations.html")
 
-@app.route('/charging-stations/')
+@app.route('/api/charging-stations/')
 def get_charging_stations():
-    all_stations = []
-    offset = 0
-    limit = 50  # fetch 50 results at a time, but you can adjust this based on the API limits
+    lat = request.args.get('lat', 36.7783, type=float)  # Fetch the latitude from the query parameters or default to California's latitude
+    lng = request.args.get('lng', -119.4179, type=float)  # Fetch the longitude from the query parameters or default to California's longitude
     
-    while True:
-        params = {
-            'output': 'json',
-            'countrycode': 'US',
-            'state': 'California',
-            'maxresults': limit,
-            'startindex': offset,
-            'key': os.getenv('OPEN_CHARGE_MAP_API_KEY')
-        }
-        
-        response = requests.get(BASE_URL, params=params)
-        
-        if response.status_code == 200:
-            stations = response.json()
-            if not stations:  # Break when no more stations are returned
-                break
-            all_stations.extend(stations)
-            offset += limit  # Move to the next page
-        else:
-            return jsonify({"error": "Failed to fetch data"}), 500
-
-    return jsonify(all_stations)
-
+    params = {
+        'output': 'json',
+        'countrycode': 'US',
+        'latitude': lat,
+        'longitude': lng,
+        'distance': 50,  # Fetch stations within a 50km radius of the map's center
+        'distanceunit': 'KM',
+        'maxresults': 100,  # Limiting to 100 results per fetch for performance
+        'key': OPEN_CHARGE_MAP_API_KEY
+    }
+    
+    response = requests.get(BASE_URL, params=params)
+    
+    if response.status_code == 200:
+        stations = response.json()
+        return jsonify(stations)
+    else:
+        return jsonify({"error": "Failed to fetch data"}), 500
 
 
 if __name__ == "__main__":
