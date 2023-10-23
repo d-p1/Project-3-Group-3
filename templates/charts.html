@@ -1,6 +1,15 @@
 {% extends "base.html" %}
 
+
+
+{% block title %}Charts{% endblock %}
+
 {% block content %}
-<h1>Charts</h1>
-<p>This is the charts page. Content to be added soon.</p>
+    <div class="container">
+        <h2>Fuel Type Distribution for 2022</h2>
+        {{ fuel_chart|safe }}
+
+        <h2>Top 10 States with Electric Vehicles in 2022</h2>
+        {{ ev_chart|safe }}
+    </div>
 {% endblock %}
