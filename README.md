@@ -2,8 +2,6 @@
 
 With the rapid growth of Electric Vehicles in the US, Charging Stations are becoming more in Demand. Our focus will extend beyond mere location data; we aim to distinguish between public and private charging stations, providing users with invaluable information for planning their journeys. We aim to include overlays showcasing different connector types, charging networks, and geographic details at the Zip or County level.
 
-Presentation Link: https://docs.google.com/presentation/d/1Y-gC5kGQ_ffBLKOrKgz8tCdXwQww7FmlmZQwrEcDBUc/edit?usp=sharing
-
 (putting this temporarily, will remove after):
 ## Technical Requirements for Project 3
 ### Data and Delivery (25 points)
