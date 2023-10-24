@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
-
+{% block head %}
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% endblock %}
 
 {% block title %}Charts{% endblock %}
 
@@ -11,5 +13,18 @@
 
         <h2>Top 10 States with Electric Vehicles in 2022</h2>
         {{ ev_chart|safe }}
+
+        <h2>Growth of Electric Vehicles in California Over the Years</h2>
+        {{ ev_growth_chart|safe }}
+
+        <h2>Growth of Electric Vehicles Over the Years</h2>
+        {{ all_ev_growth_chart|safe }}
+
+        <h2>Comparison of Traditional vs Alternative Fuel for 2022</h2>
+        {{ comp_chart|safe }}
+
+        <h2>Comparison of EV vs. HEV vs. Diesel in 2022 for all States</h2>
+        {{ statewise_chart|safe }}
+
     </div>
 {% endblock %}
